@@ -1,24 +1,30 @@
 package data;
 
 import data.piece.ChessPiece;
+import datatype.PlayerSide;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class GameState {
     private PlayerSide currentSide;
-    HashMap<PlayerSide, HashMap<Position, ChessPiece>> allPieces;
-    HashMap<PlayerSide, Boolean> canLongCastle;
-    HashMap<PlayerSide, Boolean> canShortCastle;
+    private int currentRound;
+    private HashMap<String, ChessPiece> allPieces;
 
     public GameState() {
         currentSide = PlayerSide.WHITE;
-        canLongCastle = new HashMap<PlayerSide, Boolean>();
-        canShortCastle = new HashMap<PlayerSide, Boolean>();
-        allPieces = new HashMap<PlayerSide, HashMap<Position, ChessPiece>>();
-        for (PlayerSide side : PlayerSide.values()){
-            canLongCastle.put(side, true);
-            canShortCastle.put(side, true);
-            allPieces.put(side, new HashMap<Position, ChessPiece>());
+        currentRound = 0;
+        allPieces = new HashMap<String, ChessPiece>();
+    }
+
+    public GameState(GameState other) {
+        currentRound = other.currentRound;
+        currentSide = other.currentSide;
+        allPieces = new HashMap<String, ChessPiece>();
+        for (Map.Entry<String, ChessPiece> entry : other.allPieces.entrySet()){
+            String key = entry.getKey();
+            ChessPiece value = entry.getValue();
+            allPieces.put(key, value.deepCopy());
         }
     }
 
@@ -28,5 +34,31 @@ public class GameState {
 
     public void setCurrentSide(PlayerSide currentSide) {
         this.currentSide = currentSide;
+    }
+
+    public int getCurrentRound() {
+        return currentRound;
+    }
+
+    public void setCurrentRound(int currentRound) {
+        this.currentRound = currentRound;
+    }
+
+    public void addPiece(Position position, ChessPiece chessPiece){
+        allPieces.put(position.toString(), chessPiece.deepCopy());
+    }
+
+    public ChessPiece getPiece(Position position){
+        ChessPiece piece = allPieces.get(position.toString());
+        if (piece == null) {
+            return null;
+        }
+        else{
+            return piece.deepCopy();
+        }
+    }
+
+    public void removePiece(Position position){
+        allPieces.remove(position.toString());
     }
 }

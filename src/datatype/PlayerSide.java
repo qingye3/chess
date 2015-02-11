@@ -1,4 +1,4 @@
-package data;
+package datatype;
 
 /**
  * Created by Qing on 2/10/2015.

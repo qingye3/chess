@@ -5,10 +5,9 @@ import data.Position;
 
 /**
  * Created by Qing on 2/10/2015.
- * An implementation for moving the pawn
- * TODO:IMPLEMENT THIS
+ * An implementation for moving the pawn. one of the move strategies
  */
-public class PawnMoveController extends MoveController {
+public class PawnMoveStrategy extends MoveStrategy {
     @Override
     public GameState move(GameState gameState, Position origin, Position destination) {
         return null;

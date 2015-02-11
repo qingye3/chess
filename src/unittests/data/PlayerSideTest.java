@@ -1,6 +1,6 @@
 package unittests.data;
 
-import data.PlayerSide;
+import datatype.PlayerSide;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

@@ -1,8 +1,9 @@
 package unittests.data;
 
-import controller.PawnMoveController;
+import controller.PawnMoveStrategy;
 import data.piece.ChessPiece;
 import data.piece.Pawn;
+import datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,15 +16,23 @@ public class PawnTest {
     @Before
     public void setUp() throws Exception {
         pawn = new Pawn();
+        pawn.setPlayerSide(PlayerSide.BLACK);
     }
 
     @Test
     public void testGetMoveController() throws Exception {
-        assertTrue(pawn.getMoveController() instanceof PawnMoveController);
+        assertTrue(pawn.getMoveStrategy() instanceof PawnMoveStrategy);
     }
 
     @Test
     public void testToString() throws Exception {
         assertEquals("", pawn.toString());
+    }
+
+    @Test
+    public void testDeepCopy() throws Exception {
+        ChessPiece copy = pawn.deepCopy();
+        assertEquals("", copy.toString());
+        assertEquals(PlayerSide.BLACK, pawn.getPlayerSide());
     }
 }
