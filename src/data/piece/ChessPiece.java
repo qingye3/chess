@@ -1,6 +1,6 @@
 package data.piece;
 
-import controller.MoveStrategy;
+import controller.MoveController;
 import datatype.PlayerSide;
 
 
@@ -27,7 +27,7 @@ public abstract class ChessPiece {
         this.playerSide = playerSide;
     }
 
-    public abstract MoveStrategy getMoveStrategy();
+    public abstract MoveController getMoveController();
     public abstract String toString();
     public abstract ChessPiece deepCopy();
 

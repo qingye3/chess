@@ -1,6 +1,6 @@
-package unittests.data;
+package unittests.data.piece;
 
-import controller.MoveStrategy;
+import controller.MoveController;
 import data.piece.ChessPiece;
 import datatype.PlayerSide;
 import org.junit.Before;
@@ -16,7 +16,7 @@ class MockChessPiece extends ChessPiece {
     }
 
     @Override
-    public MoveStrategy getMoveStrategy() {
+    public MoveController getMoveController() {
         return null;
     }
 
@@ -47,7 +47,7 @@ public class ChessPieceTest {
     @Test
     public void testMakeCoverageHappy() throws Exception{
         assertEquals(null, chessPiece.deepCopy().toString());
-        assertEquals(chessPiece.getMoveStrategy(), null);
+        assertEquals(chessPiece.getMoveController(), null);
     }
 
     @Test

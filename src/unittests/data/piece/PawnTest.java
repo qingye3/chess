@@ -1,6 +1,6 @@
-package unittests.data;
+package unittests.data.piece;
 
-import controller.PawnMoveStrategy;
+import controller.PawnMoveController;
 import data.piece.ChessPiece;
 import data.piece.Pawn;
 import datatype.PlayerSide;
@@ -21,7 +21,7 @@ public class PawnTest {
 
     @Test
     public void testGetMoveController() throws Exception {
-        assertTrue(pawn.getMoveStrategy() instanceof PawnMoveStrategy);
+        assertTrue(pawn.getMoveController() instanceof PawnMoveController);
     }
 
     @Test

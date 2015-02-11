@@ -7,12 +7,16 @@ import controller.PawnMoveController;
  * Created by Qing on 2/10/2015.
  * This is a class representing a pawn
  */
-public class Pawn extends ChessPiece {
-    public Pawn() {
+public class Rook extends ChessPiece {
+    private boolean hasMoved;
+
+    public Rook() {
+        hasMoved = false;
     }
 
-    public Pawn(ChessPiece other) {
+    public Rook(Rook other) {
         super(other);
+        hasMoved = other.hasMoved;
     }
 
     @Override
@@ -22,11 +26,19 @@ public class Pawn extends ChessPiece {
 
     @Override
     public String toString() {
-        return "";
+        return "R";
     }
 
     @Override
     public ChessPiece deepCopy() {
-        return new Pawn(this);
+        return new Rook(this);
+    }
+
+    public boolean isHasMoved() {
+        return hasMoved;
+    }
+
+    public void setHasMoved(boolean hasMoved) {
+        this.hasMoved = hasMoved;
     }
 }
