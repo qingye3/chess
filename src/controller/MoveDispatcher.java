@@ -22,8 +22,11 @@ public class MoveDispatcher {
         if (piece == null){
             throw new ChessException ("Chess piece not found at given position");
         }
-        MoveController strategy = piece.getMoveController();
-        GameState candiateState = strategy.move(gameState, origin, destination);
+        if (piece.getPlayerSide() != gameState.getCurrentSide()){
+            throw new ChessException ("Cannot move opponent's piece");
+        }
+        MoveController controller = piece.getMoveController();
+        GameState candiateState = controller.move(gameState, origin, destination);
         if(GameStatus.IMPOSSIBLE == gameStateEvaluator.evaluate(candiateState)){
             throw new ChessException ("Invalid Move");
         }

@@ -4,9 +4,9 @@ import data.GameState;
 import data.Position;
 import data.piece.ChessPiece;
 import data.piece.Rook;
-import exception.ChessBoardException;
 import exception.ChessException;
-import javafx.geometry.Pos;
+
+import static java.lang.Math.abs;
 
 /**
  * Created by Qing on 2/11/2015.
@@ -29,7 +29,7 @@ public class RookMoveValidator implements MoveValidator{
             throw new ChessException("Invalid Move: Rook can only move in straight line");
         }
         if (!isPathClear(gameState, origin, destination)){
-            throw new ChessBoardException("Invalid Move: Rook cannot jump over another piece");
+            throw new ChessException("Invalid Move: Rook cannot jump over another piece");
         }
     }
 
@@ -38,40 +38,58 @@ public class RookMoveValidator implements MoveValidator{
     }
 
     private boolean isPathClear(GameState gameState, Position origin, Position destination) {
-        if (origin.getX() == destination.getX()){
-            int min = min(origin.getY(), destination.getY());
-            int max = max(origin.getY(), destination.getY());
-            for (int y = min + 1; y < max; y++){
-                if (gameState.getPiece(new Position(origin.getX(), y)) != null){
-                    return false;
-                }
-            }
-        }
-        if (origin.getY() == destination.getY()){
-            int min = min(origin.getX(), destination.getX());
-            int max = max(origin.getX(), destination.getX());
-            for (int x = min + 1; x < max; x++){
-                if (gameState.getPiece(new Position(origin.getX(), x)) != null){
-                    return false;
-                }
+        int stepX = getStepX(origin, destination);
+        int stepY = getStepY(origin, destination);
+
+        int currX = origin.getX();
+        int currY = origin.getY();
+        int steps = getSteps(origin, destination);
+
+        for (int i = 0; i < steps; i++ ){
+            currX += stepX;
+            currY += stepY;
+
+            if (gameState.getPiece(new Position(currX, currY)) != null){
+                return false;
             }
         }
         return true;
     }
 
-    private int max(int a, int b) {
-        if (a > b) {
-            return a;
-        }  else {
-            return b;
+    private int getSteps(Position origin, Position destination) {
+        int steps;
+        if (getStepX(origin, destination) != 0) {
+            steps = abs(origin.getX() - destination.getX()) - 1;
+            return steps;
         }
+        assert(getStepY(origin, destination) != 0);
+        steps = abs(origin.getY() - destination.getY()) - 1;
+        return steps;
     }
 
-    private int min(int a, int b) {
-        if (a < b) {
-            return a;
-        }  else {
-            return b;
+    private int getStepX(Position origin, Position destination) {
+        int stepX = 0;
+        if (origin.getX() < destination.getX())
+        {
+            stepX = 1;
         }
+        if (origin.getX() > destination.getX())
+        {
+            stepX = -1;
+        }
+        return stepX;
+    }
+
+    private int getStepY(Position origin, Position destination) {
+        int stepY = 0;
+        if (origin.getY() < destination.getY())
+        {
+            stepY = 1;
+        }
+        if (origin.getY() > destination.getY())
+        {
+            stepY = -1;
+        }
+        return stepY;
     }
 }

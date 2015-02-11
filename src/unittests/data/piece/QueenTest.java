@@ -1,38 +1,37 @@
 package unittests.data.piece;
 
-import controller.PawnMoveController;
+import controller.QueenMoveController;
 import data.piece.ChessPiece;
-import data.piece.Pawn;
+import data.piece.Queen;
 import datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class PawnTest {
-
-    private ChessPiece pawn;
+public class QueenTest {
+    private ChessPiece queen;
 
     @Before
     public void setUp() throws Exception {
-        pawn = new Pawn();
-        pawn.setPlayerSide(PlayerSide.BLACK);
+        queen = new Queen();
+        queen.setPlayerSide(PlayerSide.BLACK);
     }
 
     @Test
     public void testGetMoveController() throws Exception {
-        assertTrue(pawn.getMoveController() instanceof PawnMoveController);
+        assertTrue(queen.getMoveController() instanceof QueenMoveController);
     }
 
     @Test
     public void testToString() throws Exception {
-        assertEquals("", pawn.toString());
+        assertEquals("Q", queen.toString());
     }
 
     @Test
     public void testDeepCopy() throws Exception {
-        ChessPiece copy = pawn.deepCopy();
-        assertEquals("", copy.toString());
+        ChessPiece copy = queen.deepCopy();
+        assertEquals("Q", copy.toString());
         assertEquals(PlayerSide.BLACK, copy.getPlayerSide());
     }
 }

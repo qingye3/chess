@@ -2,6 +2,7 @@ package data.piece;
 
 import controller.MoveController;
 import controller.PawnMoveController;
+import controller.RookMoveController;
 
 /**
  * Created by Qing on 2/10/2015.
@@ -21,7 +22,7 @@ public class Rook extends ChessPiece {
 
     @Override
     public MoveController getMoveController() {
-        return new PawnMoveController();
+        return new RookMoveController();
     }
 
     @Override

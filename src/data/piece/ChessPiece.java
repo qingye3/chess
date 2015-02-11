@@ -30,5 +30,4 @@ public abstract class ChessPiece {
     public abstract MoveController getMoveController();
     public abstract String toString();
     public abstract ChessPiece deepCopy();
-
 }

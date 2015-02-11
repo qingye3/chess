@@ -1,38 +1,38 @@
 package unittests.data.piece;
 
-import controller.PawnMoveController;
+import controller.BishopMoveController;
+import data.piece.Bishop;
 import data.piece.ChessPiece;
-import data.piece.Pawn;
 import datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class PawnTest {
-
-    private ChessPiece pawn;
+public class BishopTest {
+    private ChessPiece bishop;
 
     @Before
     public void setUp() throws Exception {
-        pawn = new Pawn();
-        pawn.setPlayerSide(PlayerSide.BLACK);
+        bishop = new Bishop();
+        bishop.setPlayerSide(PlayerSide.BLACK);
     }
 
     @Test
     public void testGetMoveController() throws Exception {
-        assertTrue(pawn.getMoveController() instanceof PawnMoveController);
+        assertTrue(bishop.getMoveController() instanceof BishopMoveController);
     }
 
     @Test
     public void testToString() throws Exception {
-        assertEquals("", pawn.toString());
+        assertEquals("B", bishop.toString());
     }
 
     @Test
     public void testDeepCopy() throws Exception {
-        ChessPiece copy = pawn.deepCopy();
-        assertEquals("", copy.toString());
+        ChessPiece copy = bishop.deepCopy();
+        assertEquals("B", copy.toString());
         assertEquals(PlayerSide.BLACK, copy.getPlayerSide());
     }
+
 }
