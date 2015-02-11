@@ -3,8 +3,11 @@ package unittests.data;
 import data.GameState;
 import data.Position;
 import data.piece.ChessPiece;
+import data.piece.King;
 import data.piece.Pawn;
+import data.piece.Queen;
 import datatype.PlayerSide;
+import exception.ChessException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -61,6 +64,16 @@ public class GameStateTest {
 
         piece = copy.getPiece(new Position(2, 3));
         assertEquals(PlayerSide.WHITE,piece.getPlayerSide());
+    }
+
+    @Test
+    public void testGetPositions() throws Exception {
+        GameState state = new GameState();
+        state.addPiece(new Position(2, 3), new Pawn());
+        state.addPiece(new Position(4, 6), new King());
+        state.addPiece(new Position(4, 5), new Queen());
+        assertEquals(state.getPositions(PlayerSide.WHITE).size(), 3);
+        assertEquals(state.getPositions(PlayerSide.BLACK).size(), 0);
     }
 
 }

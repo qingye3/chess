@@ -1,8 +1,11 @@
 package data;
 
 import data.piece.ChessPiece;
+import data.piece.King;
 import datatype.PlayerSide;
+import exception.ChessException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,5 +63,16 @@ public class GameState {
 
     public void removePiece(Position position){
         allPieces.remove(position.toString());
+    }
+    public ArrayList<Position> getPositions(PlayerSide side){
+        ArrayList<Position> ret = new ArrayList<Position>();
+        for (Map.Entry<String, ChessPiece> entry : allPieces.entrySet()){
+            String key = entry.getKey();
+            ChessPiece value = entry.getValue();
+            if (value.getPlayerSide() == side){
+                ret.add(new Position(key));
+            }
+        }
+        return ret;
     }
 }

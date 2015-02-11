@@ -54,6 +54,12 @@ public class PositionTest extends TestCase {
         assertFalse(pos1.equals(new String()));
         assertFalse(pos1.equals(null));
         assertTrue(pos1.equals(pos3));
+    }
 
+    @Test
+    public void testFromString() throws Exception{
+        Position pos1 = new Position(3,4);
+        Position pos2 = new Position("d5");
+        assertTrue(pos1.equals(pos2));
     }
 }

@@ -20,6 +20,11 @@ public class Position {
         this.y = y;
     }
 
+    public Position(String boardNotation){
+        x = boardNotation.charAt(0) - 'a';
+        y = Character.getNumericValue(boardNotation.charAt(1)) - 1;
+    }
+
     public int getX() {
         return x;
     }

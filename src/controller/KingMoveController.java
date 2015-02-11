@@ -10,4 +10,6 @@ public class KingMoveController extends MoveController {
         super();
         moveValidator = new KingMoveValidator();
     }
+
+    //TODO: Override the Move method to perform castling functions
 }
