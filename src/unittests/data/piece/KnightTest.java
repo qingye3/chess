@@ -1,41 +1,38 @@
 package unittests.data.piece;
 
-import controller.PawnMoveController;
+import controller.KnightMoveController;
 import data.piece.ChessPiece;
-import data.piece.Pawn;
+import data.piece.Knight;
 import datatype.PlayerSide;
+import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class PawnTest {
-
-    private Pawn pawn;
+public class KnightTest extends TestCase {
+    private ChessPiece knight;
 
     @Before
     public void setUp() throws Exception {
-        pawn = new Pawn();
-        pawn.setPlayerSide(PlayerSide.BLACK);
-
-        pawn.setFirstMovementRound(5);
+        knight = new Knight();
+        knight.setPlayerSide(PlayerSide.BLACK);
     }
 
     @Test
     public void testGetMoveController() throws Exception {
-        assertTrue(pawn.getMoveController() instanceof PawnMoveController);
+        assertTrue(knight.getMoveController() instanceof KnightMoveController);
     }
 
     @Test
     public void testToString() throws Exception {
-        assertEquals("", pawn.toString());
+        assertEquals("N", knight.toString());
     }
 
     @Test
     public void testDeepCopy() throws Exception {
-        Pawn copy = (Pawn) pawn.deepCopy();
-        assertEquals("", copy.toString());
+        ChessPiece copy = knight.deepCopy();
+        assertEquals("N", copy.toString());
         assertEquals(PlayerSide.BLACK, copy.getPlayerSide());
-        assertEquals(5, copy.getFirstMovementRound());
     }
 }

@@ -8,11 +8,24 @@ import controller.PawnMoveController;
  * This is a class representing a pawn
  */
 public class Pawn extends ChessPiece {
+
+    private int firstMovementRound;
+
     public Pawn() {
+        firstMovementRound = -1;
     }
 
-    public Pawn(ChessPiece other) {
+    public Pawn(Pawn other) {
         super(other);
+        firstMovementRound = other.firstMovementRound;
+    }
+
+    public int getFirstMovementRound() {
+        return firstMovementRound;
+    }
+
+    public void setFirstMovementRound(int firstMovementRound) {
+        this.firstMovementRound = firstMovementRound;
     }
 
     @Override

@@ -1,37 +1,36 @@
 package data.piece;
 
+import controller.KingMoveController;
 import controller.MoveController;
-import controller.RookMoveController;
 
 /**
- * Created by Qing on 2/10/2015.
- * This is a class representing a pawn
+ * Created by Qing on 2/11/2015.
  */
-public class Rook extends ChessPiece {
+public class King extends ChessPiece {
     private boolean hasMoved;
 
-    public Rook() {
+    public King() {
         hasMoved = false;
     }
 
-    public Rook(Rook other) {
+    public King(King other) {
         super(other);
         hasMoved = other.hasMoved;
     }
 
     @Override
     public MoveController getMoveController() {
-        return new RookMoveController();
+        return new KingMoveController();
     }
 
     @Override
     public String toString() {
-        return "R";
+        return "K";
     }
 
     @Override
     public ChessPiece deepCopy() {
-        return new Rook(this);
+        return new King(this);
     }
 
     public boolean isHasMoved() {
