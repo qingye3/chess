@@ -21,6 +21,25 @@ public class GameStateEvaluatorTest extends TestCase {
         super.setUp();
         evaluator = new GameStateEvaluator();
     }
+    @Test
+    public void testTwoKings() throws Exception{
+        GameState state = new GameState();
+        state.addPiece(new Position("a1"), new King());
+        state.addPiece(new Position("a2"), new King());
+        assertEquals(evaluator.evaluate(state), GameStatus.IMPOSSIBLE);
+    }
+
+    @Test
+    public void testOpponentChecked() throws Exception{
+        GameState state = new GameState();
+        state.setCurrentSide(PlayerSide.WHITE);
+        state.addPiece(new Position("a1"), new King());
+        state.addPiece(new Position("a2"), new Rook());
+        King blackKing = new King();
+        blackKing.setPlayerSide(PlayerSide.BLACK);
+        state.addPiece(new Position("a8"), blackKing);
+        assertEquals(evaluator.evaluate(state), GameStatus.IMPOSSIBLE);
+    }
 
     @Test
     public void testIsCheckedTrue() throws Exception {
@@ -72,22 +91,24 @@ public class GameStateEvaluatorTest extends TestCase {
     @Test
     public void testCheckmate2() throws Exception{
         GameState state  = new GameState();
-        state.setCurrentSide(PlayerSide.WHITE);
-        state.addPiece(new Position("a1"), new King());
-
+        state.setCurrentSide(PlayerSide.BLACK);
         King blackKing = new King();
         blackKing.setPlayerSide(PlayerSide.BLACK);
-        state.addPiece(new Position("h2"), blackKing);
+        state.addPiece(new Position("a1"), blackKing);
 
-        Rook blackRook = new Rook();
-        blackRook.setPlayerSide(PlayerSide.BLACK);
-        state.addPiece(new Position("h1"), blackRook);
+        King whiteKing = new King();
+        whiteKing.setPlayerSide(PlayerSide.WHITE);
+        state.addPiece(new Position("h2"), whiteKing);
 
-        Rook blackRook2 = new Rook();
-        blackRook2.setPlayerSide(PlayerSide.BLACK);
-        state.addPiece(new Position("g2"), blackRook2);
+        Rook whiteRook = new Rook();
+        whiteRook.setPlayerSide(PlayerSide.WHITE);
+        state.addPiece(new Position("h1"), whiteRook);
 
-        assertEquals(evaluator.evaluate(state), GameStatus.BLACKWINS);
+        Rook whiteRook2 = new Rook();
+        whiteRook2.setPlayerSide(PlayerSide.WHITE);
+        state.addPiece(new Position("g2"), whiteRook2);
+
+        assertEquals(evaluator.evaluate(state), GameStatus.WHITEWINS);
     }
 
     @Test

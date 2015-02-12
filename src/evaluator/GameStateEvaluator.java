@@ -70,7 +70,6 @@ public class GameStateEvaluator {
         ArrayList<Position> positions = gameState.getPositions(side);
         Position kingPosition = getKingPosition(gameState, side);
 
-        //TODO: refactor this
         for (Position pos : positions){
             MoveController controller = gameState.getPiece(pos).getMoveController();
             for (int x = 0; x < 8; x++) {
@@ -112,6 +111,7 @@ public class GameStateEvaluator {
                 return new Position(pos);
             }
         }
+        //caller must guarantee that there is exactly one King in the game for the selected side
         return null;
     }
 }

@@ -30,6 +30,8 @@ public class MoveDispatcher {
         if(GameStatus.IMPOSSIBLE == gameStateEvaluator.evaluate(candiateState)){
             throw new ChessException ("Invalid Move");
         }
+        candiateState.setCurrentRound(gameState.getCurrentRound() + 1);
+        candiateState.setCurrentSide(gameState.getCurrentSide().getOpponentSide());
         return candiateState;
     }
 }
