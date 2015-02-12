@@ -115,6 +115,7 @@ public class PawnMoveValidatorTest {
     @Test
     public void testJump() throws Exception{
         setUp2();
+        testMoveFail("a2", "e2");
         testMoveFail("a2", "a3");
         testMoveFail("a2", "a4");
         testMoveFail("b3", "b4");
