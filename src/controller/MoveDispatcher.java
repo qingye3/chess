@@ -16,22 +16,45 @@ public class MoveDispatcher {
     PositionValidator positionValidator = new PositionValidator();
     GameStateEvaluator gameStateEvaluator = new GameStateEvaluator();
 
+    /**
+     * Returns a state after the move
+     * Will throw ChessException if the move is invalid or will expose your King to an attack
+     * Returned state is guaranteed to be in one of BLACKWINS, WHITEWINS, STALEMATE, NORMAL
+     * @param gameState original game state
+     * @param origin which piece to move
+     * @param destination move piece to where
+     * @return the next state
+     * @throws ChessException
+     */
     public GameState move(GameState gameState, Position origin, Position destination) throws ChessException {
+
         positionValidator.validate(origin);
         ChessPiece piece = gameState.getPiece(origin);
         if (piece == null){
             throw new ChessException ("Chess piece not found at given position");
         }
-        if (piece.getPlayerSide() != gameState.getCurrentSide()){
+        if (isPieceBelongsToOpponent(gameState, piece)){
             throw new ChessException ("Cannot move opponent's piece");
         }
+
+        //Dispatch the job to a concrete move controller
         MoveController controller = piece.getMoveController();
-        GameState candiateState = controller.move(gameState, origin, destination);
-        if(GameStatus.IMPOSSIBLE == gameStateEvaluator.evaluate(candiateState)){
+        GameState candidateState = controller.move(gameState, origin, destination);
+
+        if(isCandidateStateSuicideKing(candidateState)){
             throw new ChessException ("Invalid Move");
         }
-        candiateState.setCurrentRound(gameState.getCurrentRound() + 1);
-        candiateState.setCurrentSide(gameState.getCurrentSide().getOpponentSide());
-        return candiateState;
+
+        candidateState.setCurrentRound(gameState.getCurrentRound() + 1);
+        candidateState.setCurrentSide(gameState.getCurrentSide().getOpponentSide());
+        return candidateState;
+    }
+
+    private boolean isCandidateStateSuicideKing(GameState candidateState) {
+        return GameStatus.IMPOSSIBLE == gameStateEvaluator.evaluate(candidateState);
+    }
+
+    private boolean isPieceBelongsToOpponent(GameState gameState, ChessPiece piece) {
+        return piece.getPlayerSide() != gameState.getCurrentSide();
     }
 }

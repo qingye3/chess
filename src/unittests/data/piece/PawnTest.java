@@ -1,13 +1,13 @@
 package unittests.data.piece;
 
 import controller.PawnMoveController;
-import data.piece.ChessPiece;
 import data.piece.Pawn;
 import datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PawnTest {
 

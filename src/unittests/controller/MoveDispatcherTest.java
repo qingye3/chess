@@ -12,9 +12,6 @@ import exception.ChessException;
 import junit.framework.TestCase;
 import org.junit.Before;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.fail;
-
 public class MoveDispatcherTest extends TestCase {
     GameStateEvaluator evaluator;
     MoveDispatcher dispatcher;

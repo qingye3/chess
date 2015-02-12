@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import validator.QueenMoveValidator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 public class QueenMoveValidatorTest{
     GameState gameState;

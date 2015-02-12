@@ -3,6 +3,7 @@ package data;
 /**
  * Created by Qing on 2/10/2015.
  * This class represents a position on the chess board
+ * String representation is algebraic chess notation
  */
 public class Position {
     private int x;

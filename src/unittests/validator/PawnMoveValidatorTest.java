@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import validator.PawnMoveValidator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 public class PawnMoveValidatorTest {
     GameState gameState;

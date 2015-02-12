@@ -1,7 +1,6 @@
 package unittests.data;
 
 import data.Position;
-import javafx.geometry.Pos;
 import junit.framework.TestCase;
 import org.junit.Test;
 

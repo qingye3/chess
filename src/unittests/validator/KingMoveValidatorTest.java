@@ -8,10 +8,7 @@ import exception.ChessException;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import validator.BishopMoveValidator;
 import validator.KingMoveValidator;
-
-import static org.junit.Assert.*;
 
 public class KingMoveValidatorTest extends TestCase {
     GameState gameState;

@@ -2,7 +2,6 @@ package unittests.validator;
 
 import data.GameState;
 import data.Position;
-import data.piece.Queen;
 import data.piece.Rook;
 import datatype.PlayerSide;
 import exception.ChessException;
@@ -10,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import validator.RookMoveValidator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 public class RookMoveValidatorTest {
     GameState gameState;

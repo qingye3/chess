@@ -11,9 +11,6 @@ import evaluator.GameStateEvaluator;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import static org.junit.Assert.assertTrue;
-
 public class GameStateEvaluatorTest extends TestCase {
     GameStateEvaluator evaluator;
     @Override

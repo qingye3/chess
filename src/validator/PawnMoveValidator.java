@@ -7,7 +7,6 @@ import data.piece.Pawn;
 import datatype.PlayerSide;
 import exception.ChessException;
 
-
 import static java.lang.Math.abs;
 
 /**

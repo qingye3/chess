@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 import validator.KnightMoveValidator;
 
-import static org.junit.Assert.*;
-
 public class KnightMoveValidatorTest extends TestCase {
     GameState gameState;
     KnightMoveValidator validator;

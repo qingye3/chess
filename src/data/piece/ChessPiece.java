@@ -6,7 +6,7 @@ import datatype.PlayerSide;
 
 /**
  * Created by Qing on 2/10/2015.
- * This class represents a chess piece. Uses the prototype pattern to get deep copy
+ * This class represents a chess piece.
  */
 public abstract class ChessPiece {
     private PlayerSide playerSide;

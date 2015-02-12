@@ -1,14 +1,17 @@
 package data;
 
 import data.piece.ChessPiece;
-import data.piece.King;
 import datatype.PlayerSide;
-import exception.ChessException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The class to represent the state of the game
+ * Store all the information including board configuration etc
+ * No behavior is defined, only data.
+ */
 public class GameState {
     private PlayerSide currentSide;
     private int currentRound;

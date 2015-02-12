@@ -8,9 +8,6 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import validator.BishopMoveValidator;
-import validator.QueenMoveValidator;
-
-import static org.junit.Assert.*;
 
 public class BishopMoveValidatorTest extends TestCase {
 

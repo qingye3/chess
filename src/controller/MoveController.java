@@ -8,11 +8,22 @@ import validator.MoveValidator;
 
 /**
  * Created by Qing on 2/10/2015.
- * This is the "strategy" for the move controller. Implements the "strategy" part of the strategy pattern
+ * Abstract controller with default move command
  */
 public abstract class MoveController {
     protected MoveValidator moveValidator;
 
+    /**
+     * Default move behavior
+     * Will check for invalid move but does not check if origin is valid
+     * Throws ChessException when invalid moves occur
+     *
+     * @param gameState original state
+     * @param origin which piece to move
+     * @param destination move to where
+     * @return a state after the move
+     * @throws ChessException
+     */
     public GameState move(GameState gameState, Position origin, Position destination) throws ChessException{
         moveValidator.validate(gameState, origin, destination);
 

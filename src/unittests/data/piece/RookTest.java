@@ -1,6 +1,5 @@
 package unittests.data.piece;
 
-import controller.QueenMoveController;
 import controller.RookMoveController;
 import data.piece.ChessPiece;
 import data.piece.Rook;

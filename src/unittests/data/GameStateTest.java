@@ -7,7 +7,6 @@ import data.piece.King;
 import data.piece.Pawn;
 import data.piece.Queen;
 import datatype.PlayerSide;
-import exception.ChessException;
 import org.junit.Before;
 import org.junit.Test;
 
