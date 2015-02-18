@@ -1,9 +1,9 @@
 package unittests.data.piece;
 
-import controller.KingMoveController;
-import data.piece.ChessPiece;
-import data.piece.King;
-import datatype.PlayerSide;
+import chess.controller.KingMoveController;
+import chess.data.piece.ChessPiece;
+import chess.data.piece.King;
+import chess.datatype.PlayerSide;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;

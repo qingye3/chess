@@ -1,6 +1,6 @@
 package unittests.data;
 
-import datatype.PlayerSide;
+import chess.datatype.PlayerSide;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

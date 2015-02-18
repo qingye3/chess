@@ -1,8 +1,8 @@
 package unittests.data.piece;
 
-import controller.MoveController;
-import data.piece.ChessPiece;
-import datatype.PlayerSide;
+import chess.controller.MoveController;
+import chess.data.piece.ChessPiece;
+import chess.datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 

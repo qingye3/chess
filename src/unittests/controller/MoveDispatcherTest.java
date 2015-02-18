@@ -1,14 +1,14 @@
 package unittests.controller;
 
-import controller.MoveDispatcher;
-import data.GameState;
-import data.Position;
-import data.piece.King;
-import data.piece.Rook;
-import datatype.GameStatus;
-import datatype.PlayerSide;
-import evaluator.GameStateEvaluator;
-import exception.ChessException;
+import chess.controller.MoveDispatcher;
+import chess.data.GameState;
+import chess.data.Position;
+import chess.data.piece.King;
+import chess.data.piece.Rook;
+import chess.datatype.GameStatus;
+import chess.datatype.PlayerSide;
+import chess.evaluator.GameStateEvaluator;
+import chess.exception.ChessException;
 import junit.framework.TestCase;
 import org.junit.Before;
 

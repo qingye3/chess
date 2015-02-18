@@ -1,6 +1,6 @@
 package unittests.data;
 
-import data.Position;
+import chess.data.Position;
 import junit.framework.TestCase;
 import org.junit.Test;
 

@@ -1,12 +1,12 @@
 package unittests.validator;
 
-import data.GameState;
-import data.Position;
-import data.piece.Queen;
-import exception.ChessException;
+import chess.data.GameState;
+import chess.data.Position;
+import chess.data.piece.Queen;
+import chess.exception.ChessException;
 import org.junit.Before;
 import org.junit.Test;
-import validator.QueenMoveValidator;
+import chess.validator.QueenMoveValidator;
 
 import static org.junit.Assert.fail;
 

@@ -1,13 +1,13 @@
 package unittests.validator;
 
-import data.GameState;
-import data.Position;
-import data.piece.Bishop;
-import exception.ChessException;
+import chess.data.GameState;
+import chess.data.Position;
+import chess.data.piece.Bishop;
+import chess.exception.ChessException;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import validator.BishopMoveValidator;
+import chess.validator.BishopMoveValidator;
 
 public class BishopMoveValidatorTest extends TestCase {
 
