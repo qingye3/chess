@@ -14,6 +14,9 @@ import java.awt.*;
 public class ChessBoardView {
     private JPanel rootView;
     private JPanel pnlChessBoard;
+    private JButton resignButton;
+    private JButton drawButton;
+    private JButton undoButton;
 
     public JPanel getRootView(){
         return rootView;
