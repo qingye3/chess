@@ -1,5 +1,6 @@
 package chess.validator;
 
+import chess.constants.Constants;
 import chess.data.GameState;
 import chess.data.Position;
 import chess.data.piece.ChessPiece;
@@ -61,14 +62,14 @@ public class PawnMoveValidator extends MoveValidator {
 
     private void validateBlackNormalMove(GameState gameState, Position origin, Position destination) throws ChessException {
         //Black pawn in line 7 (or 6 in 0 prefix array) can move two step forward
-        if (origin.getY() == 6){
-            if (destination.getY() == 5 &&
-                    noPieceAt(gameState, new Position(origin.getX(), 5))){
+        if (origin.getY() == Constants.BOARDHEIGHT - 2){
+            if (destination.getY() == Constants.BOARDHEIGHT - 3 &&
+                    noPieceAt(gameState, new Position(origin.getX(), Constants.BOARDHEIGHT - 3))){
                 return;
             }
-            if (destination.getY() == 4 &&
-                    noPieceAt(gameState, new Position(origin.getX(), 4)) &&
-                    noPieceAt(gameState, new Position(origin.getX(), 5))){
+            if (destination.getY() == Constants.BOARDHEIGHT - 4 &&
+                    noPieceAt(gameState, new Position(origin.getX(), Constants.BOARDHEIGHT - 4)) &&
+                    noPieceAt(gameState, new Position(origin.getX(), Constants.BOARDHEIGHT - 3))){
                 return;
             }
         } else {

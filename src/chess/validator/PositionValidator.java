@@ -1,5 +1,6 @@
 package chess.validator;
 
+import chess.constants.Constants;
 import chess.data.Position;
 import chess.exception.ChessBoardException;
 
@@ -14,9 +15,9 @@ public class PositionValidator {
      */
     public void validate(Position position) throws ChessBoardException {
         if (position.getX() < 0 ||
-            position.getX() > 7 ||
+            position.getX() >= Constants.BOARDWIDTH||
             position.getY() < 0 ||
-            position.getY()> 7){
+            position.getY() >= Constants.BOARDHEIGHT){
             throw new ChessBoardException("Position out of board!");
         }
     }
