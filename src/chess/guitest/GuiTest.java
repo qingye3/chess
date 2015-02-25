@@ -1,8 +1,7 @@
 package chess.guitest;
 
-import chess.data.GameState;
 import chess.data.GameStateGenerator;
-import chess.gui.ChessBoardView;
+import chess.gui.view.ChessBoardView;
 
 import javax.swing.*;
 
@@ -15,7 +14,7 @@ public class GuiTest {
                 UIManager.getSystemLookAndFeelClassName()
         );
         ChessBoardView chessBoardView = new ChessBoardView();
-        chessBoardView.update(GameStateGenerator.standardOpening());
+        chessBoardView.update(GameStateGenerator.specialOpening());
         JFrame mainFrame = new JFrame("ChessBoardView");
         mainFrame.setContentPane(chessBoardView.getRootView());
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

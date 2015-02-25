@@ -1,4 +1,4 @@
-package chess.gui;
+package chess.gui.view;
 
 import chess.constants.Constants;
 import chess.data.GameState;
