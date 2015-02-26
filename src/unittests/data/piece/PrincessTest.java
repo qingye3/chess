@@ -1,8 +1,8 @@
 package unittests.data.piece;
 
-import chess.controller.PrincessMoveController;
-import chess.data.piece.Princess;
-import chess.datatype.PlayerSide;
+import chess.lib.controller.PrincessMoveController;
+import chess.lib.data.piece.Princess;
+import chess.lib.datatype.PlayerSide;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;

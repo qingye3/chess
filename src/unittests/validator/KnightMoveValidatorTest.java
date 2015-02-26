@@ -1,13 +1,13 @@
 package unittests.validator;
 
-import chess.data.GameState;
-import chess.data.Position;
-import chess.data.piece.Knight;
-import chess.exception.ChessException;
+import chess.lib.data.GameState;
+import chess.lib.data.Position;
+import chess.lib.data.piece.Knight;
+import chess.lib.exception.ChessException;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-import chess.validator.KnightMoveValidator;
+import chess.lib.validator.KnightMoveValidator;
 
 public class KnightMoveValidatorTest extends TestCase {
     GameState gameState;

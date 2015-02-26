@@ -1,15 +1,13 @@
 package unittests.validator;
 
-import chess.data.GameState;
-import chess.data.Position;
-import chess.data.piece.Empress;
-import chess.exception.ChessException;
-import chess.validator.EmpressMoveValidator;
+import chess.lib.data.GameState;
+import chess.lib.data.Position;
+import chess.lib.data.piece.Empress;
+import chess.lib.exception.ChessException;
+import chess.lib.validator.EmpressMoveValidator;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class EmpressMoveValidatorTest extends TestCase {
     GameState gameState;

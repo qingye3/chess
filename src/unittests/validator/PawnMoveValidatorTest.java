@@ -1,13 +1,13 @@
 package unittests.validator;
 
-import chess.data.GameState;
-import chess.data.Position;
-import chess.data.piece.Pawn;
-import chess.datatype.PlayerSide;
-import chess.exception.ChessException;
+import chess.lib.data.GameState;
+import chess.lib.data.Position;
+import chess.lib.data.piece.Pawn;
+import chess.lib.datatype.PlayerSide;
+import chess.lib.exception.ChessException;
 import org.junit.Before;
 import org.junit.Test;
-import chess.validator.PawnMoveValidator;
+import chess.lib.validator.PawnMoveValidator;
 
 import static org.junit.Assert.fail;
 

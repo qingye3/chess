@@ -1,9 +1,9 @@
 package unittests.data.piece;
 
-import chess.controller.RookMoveController;
-import chess.data.piece.ChessPiece;
-import chess.data.piece.Rook;
-import chess.datatype.PlayerSide;
+import chess.lib.controller.RookMoveController;
+import chess.lib.data.piece.ChessPiece;
+import chess.lib.data.piece.Rook;
+import chess.lib.datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 

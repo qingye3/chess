@@ -1,8 +1,8 @@
 package unittests.data.piece;
 
-import chess.controller.PawnMoveController;
-import chess.data.piece.Pawn;
-import chess.datatype.PlayerSide;
+import chess.lib.controller.PawnMoveController;
+import chess.lib.data.piece.Pawn;
+import chess.lib.datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 

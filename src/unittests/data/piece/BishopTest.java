@@ -1,9 +1,9 @@
 package unittests.data.piece;
 
-import chess.controller.BishopMoveController;
-import chess.data.piece.Bishop;
-import chess.data.piece.ChessPiece;
-import chess.datatype.PlayerSide;
+import chess.lib.controller.BishopMoveController;
+import chess.lib.data.piece.Bishop;
+import chess.lib.data.piece.ChessPiece;
+import chess.lib.datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 

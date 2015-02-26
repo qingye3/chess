@@ -1,16 +1,13 @@
 package unittests.validator;
 
-import chess.data.GameState;
-import chess.data.Position;
-import chess.data.piece.Princess;
-import chess.exception.ChessException;
-import chess.validator.PrincessMoveValidator;
+import chess.lib.data.GameState;
+import chess.lib.data.Position;
+import chess.lib.data.piece.Princess;
+import chess.lib.exception.ChessException;
+import chess.lib.validator.PrincessMoveValidator;
 import junit.framework.TestCase;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class PrincessMoveValidatorTest extends TestCase {
 

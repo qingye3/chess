@@ -1,6 +1,6 @@
 package unittests.exception;
 
-import chess.exception.ChessException;
+import chess.lib.exception.ChessException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

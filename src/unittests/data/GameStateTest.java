@@ -1,12 +1,12 @@
 package unittests.data;
 
-import chess.data.GameState;
-import chess.data.Position;
-import chess.data.piece.ChessPiece;
-import chess.data.piece.King;
-import chess.data.piece.Pawn;
-import chess.data.piece.Queen;
-import chess.datatype.PlayerSide;
+import chess.lib.data.GameState;
+import chess.lib.data.Position;
+import chess.lib.data.piece.ChessPiece;
+import chess.lib.data.piece.King;
+import chess.lib.data.piece.Pawn;
+import chess.lib.data.piece.Queen;
+import chess.lib.datatype.PlayerSide;
 import org.junit.Before;
 import org.junit.Test;
 

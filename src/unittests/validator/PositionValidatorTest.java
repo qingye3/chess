@@ -1,10 +1,10 @@
 package unittests.validator;
 
-import chess.data.Position;
-import chess.exception.ChessBoardException;
+import chess.lib.data.Position;
+import chess.lib.exception.ChessBoardException;
 import junit.framework.TestCase;
 import org.junit.Test;
-import chess.validator.PositionValidator;
+import chess.lib.validator.PositionValidator;
 
 public class PositionValidatorTest extends TestCase {
     PositionValidator validator;

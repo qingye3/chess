@@ -1,13 +1,13 @@
 package unittests.evaluator;
 
-import chess.data.GameState;
-import chess.data.Position;
-import chess.data.piece.King;
-import chess.data.piece.Queen;
-import chess.data.piece.Rook;
-import chess.datatype.GameStatus;
-import chess.datatype.PlayerSide;
-import chess.evaluator.GameStateEvaluator;
+import chess.lib.data.GameState;
+import chess.lib.data.Position;
+import chess.lib.data.piece.King;
+import chess.lib.data.piece.Queen;
+import chess.lib.data.piece.Rook;
+import chess.lib.datatype.GameStatus;
+import chess.lib.datatype.PlayerSide;
+import chess.lib.evaluator.GameStateEvaluator;
 import junit.framework.TestCase;
 import org.junit.Test;
 
