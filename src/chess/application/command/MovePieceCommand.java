@@ -6,7 +6,6 @@ import chess.lib.controller.MoveDispatcher;
 import chess.lib.data.GameState;
 import chess.lib.data.Position;
 import chess.lib.datatype.GameStatus;
-import chess.lib.datatype.PlayerSide;
 import chess.lib.evaluator.GameStateEvaluator;
 import chess.lib.exception.ChessException;
 
@@ -34,7 +33,7 @@ public class MovePieceCommand implements Command{
         model.setGameState(nextState);
         GameStateEvaluator evaluator = new GameStateEvaluator();
         GameStatus status = evaluator.evaluate(nextState);
-        model.saveResult(status);
+        model.updateScoreByGameResult(status);
     }
 
     @Override

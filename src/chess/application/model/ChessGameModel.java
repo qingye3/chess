@@ -57,6 +57,11 @@ public class ChessGameModel extends Observable
         initializeStandardOpening();
     }
 
+    /**
+     *
+     * @return true if moves can be made
+     *         false game is over
+     */
     public boolean isPlayable() {
         if (isDraw || isResign){
             return false;
@@ -112,6 +117,12 @@ public class ChessGameModel extends Observable
         currentState = gameState;
     }
 
+    /**
+     * Implements the storeAndExecute function inside the invoker interface
+     * Part of the command pattern
+     * @param cmd the command to execute
+     * @throws ChessException
+     */
     @Override
     public void storeAndExecute(Command cmd) throws ChessException {
         cmd.execute();
@@ -119,7 +130,15 @@ public class ChessGameModel extends Observable
         commandHistory.push(cmd);
     }
 
-    public void saveResult(GameStatus result){
+    /**
+     * update score by game result
+     * Convention in chess tournament
+     * +2 if win
+     * +1 if draw
+     * no change if lose
+     * @param result
+     */
+    public void updateScoreByGameResult(GameStatus result){
         switch (result){
             case NORMAL:
                 break;
@@ -135,6 +154,10 @@ public class ChessGameModel extends Observable
         }
     }
 
+    /**
+     * Undo a move command
+     * Cannot undo a move command that results in a game ending event
+     */
     public void undo(){
         if (!isPlayable() || commandHistory.empty()){
             return;

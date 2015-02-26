@@ -15,16 +15,28 @@ public class DrawButtonListener implements ActionListener{
     ChessGameModel chessGameModel;
     ChessBoardView chessBoardView;
 
+    /**
+     * Listen to the Draw button
+     * @param chessGameModel model to operate on
+     * @param chessBoardView view creating the listener
+     */
     public DrawButtonListener(ChessGameModel chessGameModel, ChessBoardView chessBoardView) {
         this.chessGameModel = chessGameModel;
         this.chessBoardView = chessBoardView;
     }
 
+    /**
+     * response to button click
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        PlayerSide currentSide = chessGameModel.getCurrentState().getCurrentSide();
+        if (! chessGameModel.isPlayable()){
+            chessBoardView.showMessage("Game already over. Cannot draw.");
+            return;
+        }
         chessBoardView.showMessage("Players agree to draw");
-        chessGameModel.saveResult(GameStatus.STALEMATE);
+        chessGameModel.updateScoreByGameResult(GameStatus.STALEMATE);
         chessGameModel.setDraw(true);
         chessGameModel.setNoOneTouchAnyThing(false);
     }
