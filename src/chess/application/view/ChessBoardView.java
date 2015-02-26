@@ -1,6 +1,6 @@
 package chess.application.view;
 
-import chess.application.controller.DragPieceMouseEventHandler;
+import chess.application.controller.*;
 import chess.application.model.ChessGameModel;
 import chess.application.model.Observable;
 import chess.lib.constants.Constants;
@@ -21,6 +21,10 @@ public class ChessBoardView implements Observer {
     private JButton resignButton;
     private JButton drawButton;
     private JButton undoButton;
+    private JButton showScoreButton;
+    private JButton newGameButton;
+    private JButton specialGameButton;
+    private JFrame mainFrame ;
 
     /**
      * should only be used by the event handler
@@ -30,11 +34,12 @@ public class ChessBoardView implements Observer {
         return pnlChessBoard;
     }
 
+
     /**
      * create a frame/window for the view
      */
     public void createFrame(){
-        JFrame mainFrame = new JFrame("ChessBoardView");
+        mainFrame = new JFrame("ChessBoardView");
         mainFrame.setContentPane(rootView);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.pack();
@@ -52,14 +57,25 @@ public class ChessBoardView implements Observer {
         update(null);
         bindListeners();
     }
+    public void showMessage(String message){
+        JOptionPane.showMessageDialog(mainFrame, message);
+
+    }
 
     /**
-     * say my name
+     * bind action listeners to buttons and chessboard!
      */
     private void bindListeners() {
         DragPieceMouseEventHandler dragHandler = new DragPieceMouseEventHandler(chessGameModel, this);
         pnlChessBoard.addMouseListener(dragHandler);
         pnlChessBoard.addMouseMotionListener(dragHandler);
+
+        showScoreButton.addActionListener(new ShowScoreButtonListener(chessGameModel, this));
+        undoButton.addActionListener(new UndoButtonListener(chessGameModel));
+        newGameButton.addActionListener(new NewGameButtonListener(chessGameModel, this));
+        specialGameButton.addActionListener(new NewSpecialGameLButtonListener(chessGameModel, this));
+        resignButton.addActionListener(new ResignButtonListener(chessGameModel, this));
+        drawButton.addActionListener(new DrawButtonListener(chessGameModel, this));
     }
 
     public void repaintChessBoard() {

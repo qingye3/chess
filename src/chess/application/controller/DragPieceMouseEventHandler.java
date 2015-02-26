@@ -6,8 +6,9 @@ import chess.application.model.ChessGameModel;
 import chess.application.view.ChessBoardView;
 import chess.application.view.ChessPieceView;
 import chess.application.view.Tile;
+import chess.lib.data.GameState;
 import chess.lib.data.Position;
-import chess.lib.datatype.PlayerSide;
+import chess.lib.evaluator.GameStateEvaluator;
 import chess.lib.exception.ChessException;
 
 import javax.swing.*;
@@ -50,6 +51,10 @@ public class DragPieceMouseEventHandler implements MouseListener, MouseMotionLis
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if (! chessGameModel.isPlayable()){
+            chessBoardView.showMessage("The game has ends. Please start a new game.");
+            return;
+        }
         Component component = pnlChessBoard.findComponentAt(e.getX(), e.getY());
         if (component instanceof ChessPieceView){
             pickedUpPiece = (ChessPieceView) component;
@@ -69,19 +74,41 @@ public class DragPieceMouseEventHandler implements MouseListener, MouseMotionLis
         Position finalPosition = pieceAtTile.getPosition();
         Command cmd = new MovePieceCommand(chessGameModel, initialPosition, finalPosition);
         try {
-            System.out.println(chessGameModel);
             chessGameModel.storeAndExecute(cmd);
         } catch (ChessException exception) {
-            exception.printStackTrace();
             pieceAtTile.remove(pickedUpPiece);
             initialTile.add(pickedUpPiece);
             chessBoardView.repaintChessBoard();
+            chessBoardView.showMessage(exception.getMessage());
             return;
         }
         pieceAtTile.removeAll();
         pieceAtTile.add(pickedUpPiece);
         chessBoardView.repaintChessBoard();
         pickedUpPiece = null;
+        showResultMessage();
+    }
+
+    private void showResultMessage() {
+        GameState gameState = chessGameModel.getCurrentState();
+        GameStateEvaluator evaluator = new GameStateEvaluator();
+        switch (evaluator.evaluate(gameState)){
+            case NORMAL:
+                if (evaluator.isChecked(gameState, gameState.getCurrentSide())){
+                    chessBoardView.showMessage("We must protect our King!!!");
+                }
+                break;
+            case BLACKWINS:
+                chessBoardView.showMessage("Black wins the game");
+                break;
+            case WHITEWINS:
+                chessBoardView.showMessage("White wins the game");
+                break;
+            case STALEMATE:
+                chessBoardView.showMessage("Stalemate");
+                break;
+        }
+
     }
 
     @Override
@@ -102,7 +129,6 @@ public class DragPieceMouseEventHandler implements MouseListener, MouseMotionLis
             if (component instanceof JPanel){
                 JPanel currentTile = (JPanel) component;
                 JPanel pieceAtTile = (JPanel) pickedUpPiece.getParent();
-                System.out.println(pieceAtTile);
                 if (pieceAtTile != null && currentTile != pieceAtTile){
                     pieceAtTile.remove(pickedUpPiece);
                     currentTile.add(pickedUpPiece, 0);

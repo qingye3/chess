@@ -1,5 +1,4 @@
 package chess.lib.controller;
-
 import chess.lib.validator.KnightMoveValidator;
 
 /**
